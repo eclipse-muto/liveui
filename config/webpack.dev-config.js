@@ -39,7 +39,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader"
@@ -136,8 +136,8 @@ module.exports = {
     }),
   ],
   resolve: {
-    modules: ['node_modules', path.resolve(appDirectory, 'src')],
-    extensions: ['.js', '.jsx', '.react.js'],
+    modules: ['node_modules', path.resolve(appDirectory, 'src'), 'src'],
+    extensions: ['.js', '.jsx','.ts', '.tsx', '.react.js'],
     mainFields: ['browser', 'jsnext:main', 'main'],
   },
   devtool: 'eval-source-map',

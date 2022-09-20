@@ -34,12 +34,15 @@ module.exports = {
     filename: '[name].js',
     libraryTarget: 'commonjs2',
   },
+  resolve: {
+    extensions: ['js','.jsx', '.ts','.tsx', '.js', '.json']
+ },
   module: {
     rules: [
       ...rules,
       {
         loader: 'babel-loader',
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         include: path.join(process.cwd()),
         exclude: /(node_modules|dist|build)/,
       },
