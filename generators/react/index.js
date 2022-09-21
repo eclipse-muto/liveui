@@ -43,6 +43,13 @@ module.exports = plop => ({
         return 'The name is required';
       },
     },
+    {
+      type: 'confirm',
+      name: 'isTypescript',
+      message: 'Enable Typescript?',
+      default: true
+      
+    },
   ],
   actions: data => {
     const appPath = path.resolve(process.cwd(), data.name);
@@ -60,6 +67,32 @@ module.exports = plop => ({
         path: path.resolve(appPath, '.gitignore'),
         templateFile: './react/.gitignore.hbs',
         abortOnFail: true,
+      },
+      {
+        type: 'add',
+        path: path.resolve(appPath, '.babelrc'),
+        templateFile: './react/.babelrc.hbs',
+        abortOnFail: true,
+      },
+      {
+        type: 'add',
+        path: path.resolve(appPath, '.eslintrc'),
+        templateFile: './react/.eslintrc.hbs',
+        abortOnFail: true,
+      },
+      {
+        type: 'add',
+        path: path.resolve(appPath, 'tsconfig.json'),
+        templateFile: './react/tsconfig.json.hbs',
+        abortOnFail: true,
+        skip: ()=>data.isTypescript ? false : "Typescript support is skipped",
+      },
+      {
+        type: 'add',
+        path: path.resolve(appPath, 'rollup.config.js'),
+        templateFile: './react/rollup.config.js.hbs',
+        abortOnFail: true,
+        skip: ()=>data.isTypescript ? "Adding typescript support" : true,
       },
       function copyStaticFiles() {
         const source = path.resolve(__dirname, 'static');
