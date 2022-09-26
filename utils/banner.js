@@ -21,7 +21,7 @@ const banner = [
 	'| (_)_ _____ _  _(_)',
 	'| | \\ V / -_) || | |',
 	'|_|_|\\_/\\___|\\_,_|_|',
-	'https://liveui.composiv.ai',
+	'https://eclipse-muto.github.io/docs/',
 	''
 ];
 

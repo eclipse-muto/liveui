@@ -1,6 +1,10 @@
 {
     "plugins": ["react" {{#if isTypescript}}, "@typescript-eslint"{{/if}}],
     "extends": [ "react-app"],
-    "rules": {
-    }
+   "rules": {
+    {{#if isTypescript}}"@typescript-eslint/explicit-function-return-type": "off",{{/if}}
+    "no-use-before-define": "off",
+    {{#if isTypescript}}"@typescript-eslint/no-use-before-define": ["error"],{{/if}}
+    "react/react-in-jsx-scope": "warn"
+   }
   }

@@ -38,12 +38,12 @@ const args = process.argv.slice(2);
 console.log(banner);
 
 const scriptIndex = args.findIndex(
-    x => x === 'create' || x === 'build' || x === 'start' || x === 'start-native' || x === 'start-live' || x === 'start-dev' || x === 'init'
+    x => x === 'create' || x === 'build' || x === 'start' || x === 'build-lib' || x === 'start-native' || x === 'start-live' || x === 'start-dev' || x === 'init'
 );
 const script = scriptIndex === -1 ? 'create' : args[scriptIndex];
 const nodeArgs = scriptIndex > 0 ? args.slice(0, scriptIndex) : [];
 
-if (['create', 'build', 'start', 'start-native', 'start-live', 'start-dev', 'init'].includes(script)) {
+if (['create', 'build', 'build-lib', 'start', 'start-native', 'start-live', 'start-dev', 'init'].includes(script)) {
     const result = spawn.sync(
         'node',
         nodeArgs

@@ -40,7 +40,21 @@ function generateEntry(exposes) {
   Object.keys(exposes).forEach(module => {
     const modulePath = exposes[module];
     entry[module] = path.join(process.cwd(), modulePath);
+    if (!fs.existsSync(entry[module])) {
+      throw new Error(`No module entry file found at: ${chalk.red(entry[module])}`);
+    }
   })
+
+  const indexfiles = [ './src/index.js', './src/index.jsx', './src/index.ts','./src/index.tsx']
+  indexfiles.forEach(modulePath => {
+    const mpath = path.join(process.cwd(), modulePath);
+    if (fs.existsSync(mpath)) {
+      entry['index'] = mpath;
+      console.log(`Found entry file at: ${chalk.blueBright(mpath)}`)
+      return entry;
+    }
+  })
+
 
   return entry;
 }

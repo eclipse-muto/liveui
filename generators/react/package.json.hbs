@@ -8,10 +8,8 @@
     "dist",
     "src"
   ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint"
-    }
+  "engines": {
+    "node": ">=10"
   },
   "prettier": {
     "printWidth": 80,
@@ -19,49 +17,44 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "engines": {
-    "node": ">=10"
+  "eslintConfig": {
+    "extends": [
+      "standard",
+      "react-app"
+    ],
+    "ignorePatterns": [
+      "liveui.config.js",
+      ".eslintrc.js",
+      "dist/**/*.*",
+      "docker/**",
+      "internals/**"
+    ]
   },
   "scripts": {
-    {{#if isTypescript}}"tsdx-start": "tsdx watch",
-    "lib-build": "tsdx build",
-    "tsdx-test": "tsdx test --passWithNoTests",
-    "lint": "tsdx lint",
-    "tsdx-prepare": "tsdx build",
-    "size": "size-limit",{{else}}
-    "lib-build": "rollup -c --exports auto",{{/if}}
+    "lint": "eslint .",
+    "lint-fix": "eslint --fix .",
     "start": "liveui start",
     "build": "liveui build",
+    "build-lib": "liveui build-lib",
     "docker": "docker build -t liveui/{{ name }}:latest ./docker/",
     "docker-run": "docker run --rm -it -p 5001:80 liveui/{{ name }}:latest"
-  },
-  "dependencies": {
   },
   "peerDependencies": {
     "react": ">=16",
     "react-dom": ">=16",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "react-scripts": "5.0.1"
   },
   "devDependencies": {
-    "@eclipse-muto/liveui": "0.1.7",
+    "@eclipse-muto/liveui": "^0.1.8",{{#if isTypescript}}
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.11.59",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.2",{{/if}}
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "5.0.1",
-    {{#if isTypescript}}"@babel/preset-typescript": "^7.18.6",
-    "@size-limit/preset-small-lib": "^8.1.0",
-    "@types/react": "^17.0.2",
-    "@types/react-dom": "^17.0.2",
-    "husky": "^8.0.1",
-    "size-limit": "^8.1.0",
-    "tsdx": "^0.14.1",
-    "tslib": "^2.4.0",
-    "typescript": "^4.8.3"{{else}}
-    "@rollup/plugin-babel": "^5.3.1",
-    "@rollup/plugin-commonjs": "^22.0.2",
-    "@rollup/plugin-node-resolve": "^14.1.0",
-    "rollup": "^2.79.0",
-    "rollup-plugin-generate-package-json": "^3.2.0"
-    {{/if}}
+    "react-scripts": "5.0.1"{{#if isTypescript}},
+    "typescript": "^4.8.3"{{/if}}
   }
 }
