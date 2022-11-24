@@ -43,6 +43,13 @@ module.exports = plop => ({
         return 'The name is required';
       },
     },
+    {
+      type: 'confirm',
+      name: 'isTypescript',
+      message: 'Enable Typescript?',
+      default: true
+      
+    },
   ],
   actions: data => {
     const appPath = path.resolve(process.cwd(), data.name);

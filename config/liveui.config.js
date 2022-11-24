@@ -22,7 +22,7 @@
 
 module.exports = {
     hotReloadContext: 'src',
-    devPort: 5000,
+    devPort:   5050,
     microPort: 5001,
     exposes: {
         'foo': './src/index.js',
