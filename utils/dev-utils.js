@@ -67,9 +67,11 @@ function resolveLiveuiConfig() {
 
   if (fs.existsSync(customLiveuiConfigPath)) {
     customLiveuiConfig = require(customLiveuiConfigPath);
+  }else if (fs.existsSync(path.resolve(appDirectory, 'liveui.config.cjs'))) {
+    customLiveuiConfig = require(path.resolve(appDirectory, 'liveui.config.cjs'));
   }
 
-  if (args[0]) {
+  if (args.length > 1 && args[1].indexOf('liveui.config')>= 0) {
     const configPath = path.resolve(appDirectory, args[1].toString());
 
     if (fs.existsSync(configPath)) {

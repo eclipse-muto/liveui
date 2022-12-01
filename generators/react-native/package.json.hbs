@@ -7,11 +7,11 @@
     "ios": "react-native run-ios --port 5010",
     "start": "concurrently \"react-native start --port 5010\" \"liveui start-native\"  ",
     "start-live": "liveui start-native",
-    "build": "liveui build",
+    "build": "liveui build-native",
     "test": "jest",
     "lint": "eslint .",
-    "docker": "docker build -t liveui/{{ name }}:latest ./docker/",
-    "docker-run": "docker run --rm -dit -p 5001:80 liveui/{{ name }}:latest"
+    "docker": "docker build -t {{ name }}:latest ./docker/",
+    "docker-run": "docker run --rm -dit -p 5001:80 {{ name }}:latest"
   },
   "dependencies": {
     "react": "18.1.0",
@@ -20,7 +20,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
-    "@eclipse-muto/liveui": "0.1.10",
+    "@eclipse-muto/liveui": "0.1.13",
     "@react-native-community/eslint-config": "^2.0.0",
     
     {{#if isTypescript}}

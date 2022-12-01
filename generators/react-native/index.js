@@ -64,9 +64,22 @@ module.exports = plop => ({
       },
       {
         type: 'add',
+        path: path.resolve(appPath, 'liveui.config.js'),
+        templateFile: './react-native/liveui.config.js.hbs',
+        abortOnFail: true,
+      },
+      {
+        type: 'add',
         path: path.resolve(appPath, 'app.json'),
         templateFile: './react-native/app.json.hbs',
         abortOnFail: true,
+      },
+      {
+        type: 'add',
+        path: path.resolve(appPath, 'tsconfig.json'),
+        templateFile: './react-native/tsconfig.json.hbs',
+        abortOnFail: true,
+        skip: ()=>data.isTypescript ? false : "Typescript support is skipped",
       },
       {
         type: 'add',

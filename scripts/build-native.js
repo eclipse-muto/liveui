@@ -20,9 +20,10 @@ const { liveuiConfig } = require('../utils/dev-utils');
 const port = liveuiConfig.microPort || 5001;
 console.log('Rolloup listening at localhost:', port);
 const rollup =  require.resolve('rollup/dist/bin/rollup')
-const rollupConfig =  require.resolve('../config/rollup.config.cjs')
+const rollupConfig =  require.resolve('../config/rollup.config.build.cjs')
 
-const nodeArgs = [ rollup, "--config", rollupConfig, '-w'];
+const nodeArgs = [ rollup, "--config", rollupConfig];
+console.log(rollup, nodeArgs)
 const result = spawn.sync(
   "node",
    nodeArgs,

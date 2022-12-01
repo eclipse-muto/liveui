@@ -1,0 +1,12 @@
+module.exports = {
+    devPort:   5050,
+    microPort: 5001,
+    exposes: {
+        '{{ name }}': './src/index.ts',
+        'foo': './src/Foo/index.tsx',
+    },
+    shared: [
+        'react',
+        'react-native',
+    ]
+}
