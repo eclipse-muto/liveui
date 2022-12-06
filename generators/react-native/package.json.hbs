@@ -13,14 +13,16 @@
     "docker": "docker build -t {{ name }}:latest ./docker/",
     "docker-run": "docker run --rm -dit -p 5001:80 {{ name }}:latest"
   },
-  "dependencies": {
-    "react": "18.1.0",
-    "react-native": "0.70.6"
+  "peerDependencies": {
+    "react": ">=17",
+    "react-native": ">=0.60"
   },
   "devDependencies": {
+    "react": "18.1.0",
+    "react-native": "0.70.6",
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
-    "@eclipse-muto/liveui": "0.1.13",
+    "@eclipse-muto/liveui": "^0.1.14",
     "@react-native-community/eslint-config": "^2.0.0",
     
     {{#if isTypescript}}

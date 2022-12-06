@@ -1,6 +1,6 @@
 {
   "name": "@eclipse-muto/liveui",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Configuration and scripts for LiveUI.",
   "bin": {
     "liveui": "./bin/liveui.js"
