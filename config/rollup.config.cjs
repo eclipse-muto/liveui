@@ -58,11 +58,11 @@ const bundles = Object.keys(exposes).map(e => {
       banner: '/** eclipse-muto/liveui */',
       entryFileNames: '[name].js',
       dir: 'docker/dist',
-      format: "commonjs",
+      format: "cjs",
       generatedCode: 'es5',
       name: 'liveui',
-      exports: 'auto',
-      sourcemap: "inline"
+      exports: 'named',
+      sourcemap: "inline",
     },
     external: shared || [],
     plugins: p
